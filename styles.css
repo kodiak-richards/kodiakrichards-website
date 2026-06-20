@@ -253,10 +253,10 @@ p {
   left: 14px;
   right: 14px;
   border-radius: 14px;
-  background-color: rgba(250, 248, 245, 0.96);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 28px rgba(28,28,26,0.13), 0 1px 4px rgba(28,28,26,0.07);
+  background-color: rgba(250, 248, 245, 0.78);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  box-shadow: 0 4px 28px rgba(28,28,26,0.10), 0 1px 4px rgba(28,28,26,0.06);
 }
 
 /* Light nav — pages without a dark hero */
@@ -387,6 +387,10 @@ p {
 .nav__mobile .btn {
   margin-top: var(--sp-sm);
   align-self: flex-start;
+  padding: 0.875rem 2rem;
+  font-size: 0.9375rem;
+  border-bottom: none;
+  line-height: 1;
 }
 
 @media (max-width: 768px) {
@@ -595,7 +599,7 @@ p {
 
 .offer-card__image {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 7;
   height: auto;
   overflow: clip;
   position: relative;
@@ -856,7 +860,7 @@ p {
 }
 
 .about__expandable.open {
-  max-height: 600px;
+  max-height: 1200px;
   opacity: 1;
 }
 
@@ -998,7 +1002,7 @@ p {
 /* Cover photo area */
 .track-card__cover {
   position: relative;
-  height: 175px;
+  height: 140px;
   background-size: cover;
   background-position: center;
   background-color: var(--bg-section);
@@ -1126,7 +1130,7 @@ p {
   transition: transform var(--ease);
   line-height: 1;
 }
-.track-card__learn-more.open .lm-icon { transform: rotate(90deg); }
+.track-card__learn-more.open .lm-icon { transform: rotate(45deg); }
 
 /* Tracks carousel — dot navigation */
 .tracks__dots {
@@ -1960,9 +1964,23 @@ p {
 
 /* ============================================================
    CREDENTIALS — 1:1 page About section variant
+   Photo stacks above text (single column)
    ============================================================ */
 .credentials .about__inner {
-  grid-template-columns: 1fr 1.3fr;
+  grid-template-columns: 1fr;
+  max-width: 760px;
+}
+
+.credentials .about__image {
+  aspect-ratio: 16 / 7;
+  max-height: 360px;
+}
+
+@media (max-width: 768px) {
+  .credentials .about__image {
+    aspect-ratio: 3 / 2;
+    max-height: 260px;
+  }
 }
 
 .credentials-list {
@@ -2137,6 +2155,85 @@ p {
 .error-page__inner p      { color: var(--text-muted); font-size: 1.0625rem; line-height: 1.75; margin-bottom: var(--sp-lg); }
 
 /* ============================================================
+   OFFERS SCROLL WRAP — arrows + dots for home offer cards
+   ============================================================ */
+.offers__scroll-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-xs);
+}
+
+.offers__arrow {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--ease), border-color var(--ease),
+              color var(--ease), opacity var(--ease);
+  margin-top: 56px;
+}
+
+.offers__arrow:hover:not(:disabled) {
+  background: var(--bg-section);
+  border-color: var(--accent-warm);
+  color: var(--accent-warm);
+}
+
+.offers__arrow:active:not(:disabled) {
+  background: var(--accent-pale);
+}
+
+.offers__arrow:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.offers__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-inline: var(--pad);
+  margin-top: var(--sp-sm);
+}
+
+.offers__dots .dot.active {
+  background-color: var(--accent-warm);
+  width: 20px;
+}
+
+/* ============================================================
+   PROGRAM / THERAPY BULLETS — inside track-card expandables
+   ============================================================ */
+.program-bullets {
+  list-style: none;
+  margin-bottom: var(--sp-sm);
+  padding-top: var(--sp-sm);
+}
+
+.program-bullets li {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  padding: 0.3rem 0 0.3rem 1.25rem;
+  position: relative;
+}
+
+.program-bullets li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent-warm);
+  font-size: 0.85rem;
+}
+
+/* ============================================================
    MOBILE GLOBAL IMPROVEMENTS
    ============================================================ */
 @media (max-width: 768px) {
@@ -2154,4 +2251,7 @@ p {
   /* Typography floor on small screens */
   h1 { font-size: clamp(2.25rem, 10vw, 5rem); }
   h2 { font-size: clamp(1.75rem, 7vw, 3rem); }
+
+  /* Reduce gap between offers and about when testimonials are hidden */
+  .offers { padding-block-end: var(--sp-lg); }
 }

@@ -209,7 +209,7 @@
       btn.classList.toggle('open', open);
       btn.setAttribute('aria-expanded', String(open));
       const textEl = btn.querySelector('.lm-text');
-      if (textEl) textEl.textContent = open ? 'Show less' : 'Learn more';
+      if (textEl) textEl.textContent = open ? 'Close' : 'How it works';
     });
   });
 
@@ -247,7 +247,7 @@
      SCROLL-TRAP FIX — horizontal carousels must not capture
      vertical wheel events; normalize deltaMode and pass to page
   ---------------------------------------------------------- */
-  document.querySelectorAll('.tracks__grid, .counseling-card-wrap').forEach(el => {
+  document.querySelectorAll('.tracks__grid, .offers__grid, .counseling-card-wrap').forEach(el => {
     el.addEventListener('wheel', e => {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
         e.preventDefault();
@@ -327,6 +327,98 @@
 
     grid.addEventListener('scroll', updateDots, { passive: true });
     updateDots();
+  })();
+
+  /* ----------------------------------------------------------
+     OFFERS ARROWS — prev/next scroll controls for home cards
+  ---------------------------------------------------------- */
+  (function () {
+    const grid = document.querySelector('.offers__grid');
+    const prev = document.querySelector('.offers__arrow--prev');
+    const next = document.querySelector('.offers__arrow--next');
+    if (!grid || !prev || !next) return;
+
+    const cards = Array.from(grid.querySelectorAll('.offer-card'));
+    if (!cards.length) return;
+
+    const cardWidth = () => cards[0].offsetWidth + parseInt(getComputedStyle(grid).gap || 24);
+
+    const updateArrows = () => {
+      const hasOverflow = grid.scrollWidth > grid.clientWidth + 2;
+      const sl = grid.scrollLeft;
+      const maxScroll = grid.scrollWidth - grid.clientWidth;
+      /* Auto-hide arrows when all cards fit */
+      prev.style.visibility = hasOverflow ? '' : 'hidden';
+      next.style.visibility = hasOverflow ? '' : 'hidden';
+      prev.disabled = sl <= 2;
+      next.disabled = sl >= maxScroll - 2;
+    };
+
+    prev.addEventListener('click', () => {
+      grid.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+    });
+    next.addEventListener('click', () => {
+      grid.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+    });
+
+    grid.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows, { passive: true });
+    updateArrows();
+  })();
+
+  /* ----------------------------------------------------------
+     OFFERS DOTS — scroll position sync for home cards
+  ---------------------------------------------------------- */
+  (function () {
+    const grid     = document.querySelector('.offers__grid');
+    const dotsWrap = document.querySelector('.offers__dots');
+    if (!grid || !dotsWrap) return;
+
+    const cards = Array.from(grid.querySelectorAll('.offer-card'));
+    const dots  = Array.from(dotsWrap.querySelectorAll('.dot'));
+    if (!cards.length || dots.length !== cards.length) return;
+
+    const snapPos = card => card.offsetLeft - cards[0].offsetLeft;
+
+    const updateDots = () => {
+      const sl = grid.scrollLeft;
+      let activeIdx = 0, minDist = Infinity;
+      cards.forEach((card, i) => {
+        const dist = Math.abs(snapPos(card) - sl);
+        if (dist < minDist) { minDist = dist; activeIdx = i; }
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === activeIdx);
+        d.setAttribute('aria-selected', String(i === activeIdx));
+      });
+    };
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        grid.scrollTo({ left: snapPos(cards[i]), behavior: 'smooth' });
+      });
+    });
+
+    grid.addEventListener('scroll', updateDots, { passive: true });
+    updateDots();
+  })();
+
+  /* ----------------------------------------------------------
+     CAROUSEL NUDGE — gentle side-to-side hint on page load
+     Only fires if there is actual overflow; skipped otherwise.
+  ---------------------------------------------------------- */
+  (function () {
+    function nudge(el) {
+      if (!el) return;
+      /* Wait for layout, then check overflow */
+      setTimeout(() => {
+        if (el.scrollWidth <= el.clientWidth + 2) return;
+        el.scrollTo({ left: 48, behavior: 'smooth' });
+        setTimeout(() => el.scrollTo({ left: 0, behavior: 'smooth' }), 680);
+      }, 1400);
+    }
+    nudge(document.querySelector('.offers__grid'));
+    nudge(document.querySelector('.tracks__grid'));
   })();
 
 })();
