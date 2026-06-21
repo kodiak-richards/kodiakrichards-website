@@ -599,7 +599,7 @@ p {
 
 .offer-card__image {
   width: 100%;
-  aspect-ratio: 16 / 7;
+  aspect-ratio: 16 / 9;
   height: auto;
   overflow: clip;
   position: relative;
@@ -1002,7 +1002,7 @@ p {
 /* Cover photo area */
 .track-card__cover {
   position: relative;
-  height: 140px;
+  height: 175px;
   background-size: cover;
   background-position: center;
   background-color: var(--bg-section);
@@ -2153,60 +2153,6 @@ p {
 .error-page__inner .label { margin-bottom: var(--sp-sm); }
 .error-page__inner h1     { margin-bottom: var(--sp-md); }
 .error-page__inner p      { color: var(--text-muted); font-size: 1.0625rem; line-height: 1.75; margin-bottom: var(--sp-lg); }
-
-/* ============================================================
-   OFFERS SCROLL WRAP — arrows + dots for home offer cards
-   ============================================================ */
-.offers__scroll-wrap {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--sp-xs);
-}
-
-.offers__arrow {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background var(--ease), border-color var(--ease),
-              color var(--ease), opacity var(--ease);
-  margin-top: 56px;
-}
-
-.offers__arrow:hover:not(:disabled) {
-  background: var(--bg-section);
-  border-color: var(--accent-warm);
-  color: var(--accent-warm);
-}
-
-.offers__arrow:active:not(:disabled) {
-  background: var(--accent-pale);
-}
-
-.offers__arrow:disabled {
-  opacity: 0.25;
-  cursor: not-allowed;
-}
-
-.offers__dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding-inline: var(--pad);
-  margin-top: var(--sp-sm);
-}
-
-.offers__dots .dot.active {
-  background-color: var(--accent-warm);
-  width: 20px;
-}
 
 /* ============================================================
    PROGRAM / THERAPY BULLETS — inside track-card expandables
