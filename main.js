@@ -247,7 +247,7 @@
      SCROLL-TRAP FIX — horizontal carousels must not capture
      vertical wheel events; normalize deltaMode and pass to page
   ---------------------------------------------------------- */
-  document.querySelectorAll('.tracks__grid, .counseling-card-wrap').forEach(el => {
+  document.querySelectorAll('.tracks__grid').forEach(el => {
     el.addEventListener('wheel', e => {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
         e.preventDefault();
