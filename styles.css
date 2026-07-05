@@ -253,10 +253,11 @@ p {
   left: 14px;
   right: 14px;
   border-radius: 14px;
-  background-color: rgba(250, 248, 245, 0.78);
-  backdrop-filter: blur(24px) saturate(1.4);
-  -webkit-backdrop-filter: blur(24px) saturate(1.4);
-  box-shadow: 0 4px 28px rgba(28,28,26,0.10), 0 1px 4px rgba(28,28,26,0.06);
+  background-color: rgba(250, 248, 245, 0.42);
+  backdrop-filter: blur(11px) saturate(1.85);
+  -webkit-backdrop-filter: blur(11px) saturate(1.85);
+  box-shadow: 0 2px 16px rgba(28,28,26,0.06), 0 1px 3px rgba(28,28,26,0.04);
+  border: 1px solid rgba(255,255,255,0.22);
 }
 
 /* Light nav — pages without a dark hero */
@@ -564,20 +565,11 @@ p {
 .offers__sub            { color: var(--text-muted); font-size: 1rem; max-width: 480px; margin-inline: auto; }
 
 .offers__grid {
-  display: flex;
-  overflow-x: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--sp-md);
   padding-inline: var(--pad);
-  padding-block-end: var(--sp-xs); /* room for box-shadow on hover */
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline-start: var(--pad);
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  cursor: grab;
-  user-select: none;
 }
-.offers__grid::-webkit-scrollbar { display: none; }
-.offers__grid.is-dragging        { cursor: grabbing; }
 
 .offer-card {
   background-color: var(--bg-warm);
@@ -599,7 +591,7 @@ p {
 
 .offer-card__image {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 8;
   height: auto;
   overflow: clip;
   position: relative;
@@ -620,7 +612,7 @@ p {
 }
 
 .offer-card__body {
-  padding: var(--sp-sm);
+  padding: 0.625rem var(--sp-sm) var(--sp-sm);
 }
 
 /* Category label — sits in the card body above the title */
@@ -649,7 +641,7 @@ p {
   color: var(--text-muted);
   font-size: 0.875rem;
   line-height: 1.7;
-  margin-bottom: var(--sp-md);
+  margin-bottom: var(--sp-sm);
 }
 
 .offer-card__link {
@@ -674,16 +666,12 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-bottom: var(--sp-md);
+  margin-bottom: var(--sp-sm);
 }
 
 @media (max-width: 640px) {
   .offers__grid {
-    /* trailing padding = viewport - card width - left padding, so card 2 snaps flush */
-    padding-inline-end: calc(100% - 78vw - var(--pad));
-  }
-  .offer-card {
-    flex: 0 0 78vw;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2200,4 +2188,108 @@ p {
 
   /* Reduce gap between offers and about when testimonials are hidden */
   .offers { padding-block-end: var(--sp-lg); }
+}
+
+/* ============================================================
+   PATH SELECTOR — coaching-vs-therapy sorter on 1:1 page
+   ============================================================ */
+.path-selector {
+  background-color: var(--bg-warm);
+  border-bottom: 1px solid var(--border);
+}
+
+.path-selector__inner {
+  max-width: 700px;
+  margin-inline: auto;
+  padding: var(--sp-lg) var(--pad);
+}
+
+.path-selector__inner p {
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  color: var(--text-muted);
+  line-height: 1.85;
+}
+
+/* ============================================================
+   COACHING FLAGSHIP — featured card on 1:1 page
+   ============================================================ */
+.tracks__flagship {
+  padding-inline: var(--pad);
+}
+
+.tracks__flagship .track-card {
+  max-width: 560px;
+}
+
+.tracks__flagship .track-card__cover {
+  height: 200px;
+}
+
+/* ============================================================
+   TRACK SECONDARY — lightweight tiles below flagship
+   ============================================================ */
+.track-secondary {
+  padding-inline: var(--pad);
+  margin-top: var(--sp-md);
+}
+
+.track-secondary__label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  display: block;
+  margin-bottom: var(--sp-sm);
+}
+
+.track-secondary__tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-sm);
+}
+
+.track-tile {
+  background-color: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  padding: var(--sp-md);
+}
+
+.track-tile h4 {
+  font-size: 1.0625rem;
+  margin-bottom: var(--sp-xs);
+}
+
+.track-tile > p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: var(--sp-sm);
+}
+
+@media (max-width: 640px) {
+  .track-secondary__tiles {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   COUNSELING TRACK NOTE — CA residents disclaimer at header
+   ============================================================ */
+.counseling-track__note {
+  font-size: 0.8125rem;
+  color: var(--accent-warm);
+  margin-top: var(--sp-xs);
+  font-weight: 500;
+}
+
+/* ============================================================
+   SPECIALIZATIONS — two-column pill wrap on mobile
+   ============================================================ */
+@media (max-width: 640px) {
+  .spec-tag {
+    flex: 0 0 calc(50% - 4px);
+    text-align: center;
+  }
 }
