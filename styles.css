@@ -1441,13 +1441,9 @@ p {
 }
 
 .specializations__inner {
-  max-width: var(--max-w);
+  max-width: 760px;
   margin-inline: auto;
   padding-inline: var(--pad);
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: clamp(var(--sp-lg), 8vw, var(--sp-2xl));
-  align-items: start;
 }
 
 .specializations .label  { margin-bottom: var(--sp-sm); }
@@ -1494,47 +1490,39 @@ p {
   letter-spacing: 0.01em;
 }
 
-/* Specializations — featured credential-style rows */
+/* Specializations — featured pill bubbles */
 .spec-featured {
   display: flex;
-  flex-direction: column;
-  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: var(--sp-lg);
 }
 .spec-featured__item {
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  padding: var(--sp-sm) 0;
-  border-bottom: 1px solid var(--border);
+  font-size: 0.825rem;
+  padding: 6px 14px;
+  letter-spacing: 0.01em;
 }
 
-/* Collapsible "More areas of focus" */
-.spec-more {
-  margin-top: var(--sp-md);
-}
+/* Collapsible "Other areas of focus" — summary styled as section title */
 .spec-more summary {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-muted);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 600;
+  color: var(--text);
   cursor: pointer;
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   padding: var(--sp-sm) 0;
-  border-top: 1px solid var(--border);
   user-select: none;
 }
 .spec-more summary::-webkit-details-marker { display: none; }
 .spec-more summary::after {
   content: '+';
-  font-size: 1rem;
-  color: var(--text-light);
+  font-size: 1.375rem;
+  font-weight: 400;
+  color: var(--text-muted);
   margin-left: auto;
-  transition: transform var(--ease);
 }
 .spec-more[open] summary::after { content: '−'; }
 .spec-more__cloud {
@@ -1542,13 +1530,6 @@ p {
   flex-wrap: wrap;
   gap: 8px;
   padding-top: var(--sp-sm);
-}
-
-@media (max-width: 640px) {
-  .specializations__inner {
-    grid-template-columns: 1fr;
-    gap: var(--sp-lg);
-  }
 }
 
 /* ============================================================
