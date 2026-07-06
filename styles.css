@@ -1593,7 +1593,7 @@ p {
   font-style: normal;
   transition: transform var(--ease);
 }
-.poh-story__toggle.open .poh-story__toggle-icon { transform: rotate(90deg); }
+.poh-story__toggle.open .poh-story__toggle-icon { transform: rotate(45deg); }
 
 .poh-story__body {
   overflow: hidden;
