@@ -193,6 +193,8 @@
       expandable.setAttribute('aria-hidden', String(!open));
       const textEl = btn.querySelector('.read-more__text');
       if (textEl) textEl.textContent = open ? 'Read less' : 'Read more';
+      const iconEl = btn.querySelector('.read-more__icon');
+      if (iconEl) iconEl.textContent = open ? '−' : '+';
     });
   });
 

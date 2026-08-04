@@ -629,10 +629,16 @@ p {
 }
 
 .offer-card__title {
+  position: absolute;
+  bottom: var(--sp-sm);
+  left: var(--sp-md);
+  z-index: 2;
+  color: var(--white);
   font-family: var(--serif);
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
-  margin-bottom: var(--sp-sm);
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
   font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .offer-card__desc {
@@ -888,7 +894,7 @@ p {
 }
 
 .read-more.open .read-more__icon {
-  transform: rotate(90deg);
+  transform: none;
 }
 
 .about__link {
@@ -1037,9 +1043,15 @@ p {
 }
 
 .track-card h3 {
-  margin-bottom: var(--sp-sm);
+  position: absolute;
+  bottom: var(--sp-sm);
+  left: var(--sp-md);
+  z-index: 2;
+  color: var(--white);
   font-size: clamp(1.25rem, 2.2vw, 1.625rem);
   font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .track-card p {
@@ -1503,26 +1515,36 @@ p {
   letter-spacing: 0.01em;
 }
 
-/* Collapsible "Other areas of focus" — summary styled as section title */
+/* Collapsible "Other areas of focus" — tag-pill toggle matching spec-featured aesthetic */
 .spec-more summary {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  font-weight: 600;
-  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
   cursor: pointer;
   list-style: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: var(--sp-sm) 0;
+  gap: 5px;
+  padding: 6px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-pill);
   user-select: none;
+  letter-spacing: 0.01em;
+  background: transparent;
+  transition: border-color var(--ease), color var(--ease);
+  margin-top: 4px;
+}
+.spec-more summary:hover {
+  border-color: var(--text-light);
+  color: var(--text);
 }
 .spec-more summary::-webkit-details-marker { display: none; }
 .spec-more summary::after {
   content: '+';
-  font-size: 1.375rem;
+  font-size: 0.95rem;
   font-weight: 400;
-  color: var(--text-muted);
-  margin-left: auto;
+  color: var(--text-light);
+  line-height: 1;
 }
 .spec-more[open] summary::after { content: '−'; }
 .spec-more__cloud {
@@ -1734,7 +1756,8 @@ p {
 
 .two-places__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
+  max-width: 460px;
   gap: var(--sp-md);
 }
 
@@ -1916,6 +1939,19 @@ p {
   transition: color var(--ease);
 }
 .footer__nav a:hover { color: rgba(255,255,255,0.9); }
+
+.footer__nav a.footer__contact-link {
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: var(--r-pill);
+  padding: 5px 15px;
+  color: rgba(255,255,255,0.72);
+  transition: border-color var(--ease), color var(--ease), background-color var(--ease);
+}
+.footer__nav a.footer__contact-link:hover {
+  border-color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.95);
+  background-color: rgba(255,255,255,0.06);
+}
 
 .footer__social {
   display: flex;
@@ -2356,4 +2392,49 @@ p {
     flex: 0 0 calc(50% - 4px);
     text-align: center;
   }
+}
+
+/* ============================================================
+   CCC CAPTION — short text line below Three C's
+   ============================================================ */
+.ccc-caption {
+  background-color: var(--bg);
+  padding-block: var(--sp-lg);
+  text-align: center;
+}
+.ccc-caption__inner {
+  max-width: 680px;
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+.ccc-caption p {
+  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ============================================================
+   IRL BLOCK — small in-person section on community page
+   ============================================================ */
+.irl-block {
+  padding-block: var(--sp-lg) var(--sp-xl);
+  background-color: var(--bg);
+  text-align: center;
+}
+.irl-block__inner {
+  max-width: 560px;
+  margin-inline: auto;
+  padding-inline: var(--pad);
+}
+.irl-block h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-weight: 600;
+  margin-bottom: var(--sp-xs);
+}
+.irl-block p {
+  color: var(--text-muted);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  line-height: 1.7;
+  margin-bottom: var(--sp-md);
 }
