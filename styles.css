@@ -1496,9 +1496,9 @@ p {
 .spec-tag {
   font-size: 0.8rem;
   font-weight: 500;
-  color: var(--text-muted);
-  background-color: var(--bg-warm);
-  padding: 7px 14px;
+  color: var(--accent-dark);
+  background-color: var(--accent-pale);
+  padding: 6px 14px;
   letter-spacing: 0.01em;
 }
 
@@ -1507,7 +1507,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: var(--sp-lg);
+  margin-bottom: 8px; /* tight gap — toggle sits in same visual group */
 }
 .spec-featured__item {
   font-size: 0.825rem;
@@ -1515,35 +1515,37 @@ p {
   letter-spacing: 0.01em;
 }
 
-/* Collapsible "Other areas of focus" — tag-pill toggle matching spec-featured aesthetic */
+/* Collapsible "Other areas of focus" — outline pill in same accent palette as solid bubbles */
+.spec-more {
+  margin-bottom: var(--sp-lg); /* breathing room before bio */
+}
 .spec-more summary {
-  font-size: 0.8rem;
+  font-size: 0.825rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--accent-dark);
   cursor: pointer;
   list-style: none;
   display: inline-flex;
   align-items: center;
   gap: 5px;
   padding: 6px 14px;
-  border: 1.5px solid var(--border);
+  border: 1.5px solid var(--accent-pale);
   border-radius: var(--r-pill);
   user-select: none;
   letter-spacing: 0.01em;
-  background: transparent;
-  transition: border-color var(--ease), color var(--ease);
-  margin-top: 4px;
+  background: rgba(200, 221, 227, 0.22);
+  transition: border-color var(--ease), background-color var(--ease);
 }
 .spec-more summary:hover {
-  border-color: var(--text-light);
-  color: var(--text);
+  border-color: var(--accent);
+  background: rgba(200, 221, 227, 0.42);
 }
 .spec-more summary::-webkit-details-marker { display: none; }
 .spec-more summary::after {
   content: '+';
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: var(--text-light);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent-dark);
   line-height: 1;
 }
 .spec-more[open] summary::after { content: '−'; }
@@ -1551,7 +1553,8 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding-top: var(--sp-sm);
+  margin-top: 8px; /* same gap as between pills — cloud extends the cluster */
+  padding-top: 0;
 }
 
 /* ============================================================
