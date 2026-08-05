@@ -1761,6 +1761,7 @@ p {
   display: grid;
   grid-template-columns: 1fr;
   max-width: 460px;
+  margin-inline: auto;
   gap: var(--sp-md);
 }
 
