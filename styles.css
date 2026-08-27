@@ -318,10 +318,12 @@ p {
 
 .nav__links a.nav__contact,
 .nav.scrolled .nav__links a.nav__contact,
-.nav--light .nav__links a.nav__contact { color: var(--accent-warm); }
+.nav--light .nav__links a.nav__contact { color: var(--white); font-weight: 600; }
+.nav.scrolled .nav__links a.nav__contact,
+.nav--light .nav__links a.nav__contact { color: var(--text); }
 .nav__links a.nav__contact:hover,
 .nav.scrolled .nav__links a.nav__contact:hover,
-.nav--light .nav__links a.nav__contact:hover { color: var(--accent-warm-dark); }
+.nav--light .nav__links a.nav__contact:hover { color: var(--text); }
 
 /* CTA */
 .nav__cta { flex-shrink: 0; }
@@ -401,8 +403,8 @@ p {
   line-height: 1;
 }
 .nav__mobile a.nav__mobile-contact {
-  color: var(--accent-warm);
-  font-weight: 500;
+  color: var(--text);
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
