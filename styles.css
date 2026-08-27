@@ -393,6 +393,10 @@ p {
   border-bottom: none;
   line-height: 1;
 }
+.nav__mobile a.nav__mobile-contact {
+  color: var(--accent-warm);
+  font-weight: 500;
+}
 
 @media (max-width: 768px) {
   .nav__links,
@@ -1945,16 +1949,18 @@ p {
 .footer__nav a:hover { color: rgba(255,255,255,0.9); }
 
 .footer__nav a.footer__contact-link {
-  border: 1.5px solid rgba(255,255,255,0.25);
+  border: 1.5px solid rgba(255,255,255,0.38);
   border-radius: var(--r-pill);
   padding: 5px 15px;
-  color: rgba(255,255,255,0.72);
+  color: rgba(255,255,255,0.9);
+  font-weight: 600;
+  font-size: 0.9375rem;
   transition: border-color var(--ease), color var(--ease), background-color var(--ease);
 }
 .footer__nav a.footer__contact-link:hover {
-  border-color: rgba(255,255,255,0.55);
-  color: rgba(255,255,255,0.95);
-  background-color: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.65);
+  color: #fff;
+  background-color: rgba(255,255,255,0.08);
 }
 
 .footer__social {
@@ -2038,6 +2044,18 @@ p {
 .credentials .about__inner {
   grid-template-columns: 1fr;
   max-width: 760px;
+}
+
+.credentials > .label {
+  display: block;
+  max-width: 760px;
+  margin-inline: auto;
+  padding-inline: var(--pad);
+  margin-bottom: var(--sp-sm);
+}
+
+#creds-heading {
+  font-size: clamp(1.375rem, 2.5vw, 1.875rem);
 }
 
 .credentials .about__image {
@@ -2305,6 +2323,14 @@ p {
   font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
   color: var(--text-muted);
   line-height: 1.8;
+}
+
+.path-selector__shared {
+  text-align: center;
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  color: var(--text-muted);
+  margin-top: var(--sp-md);
+  font-style: italic;
 }
 
 @media (max-width: 640px) {
