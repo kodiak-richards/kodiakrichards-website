@@ -4,24 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Contact | Kodiak Richards</title>
-  <meta name="description" content="Get in touch with Kodiak Richards, a therapist-in-training and integrative coach in San Diego, for referrals, brand collaborations, or general inquiries.">
-  <link rel="canonical" href="https://www.kodiakrichards.com/contact.html">
+  <title>Articles on Nervous System Health | Kodiak Richards</title>
+  <meta name="description" content="Articles by Kodiak Richards on nervous system regulation, HRV biofeedback, burnout, digital wellness, and IFS and somatic work. San Diego, CA.">
+  <link rel="canonical" href="https://www.kodiakrichards.com/articles/">
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://www.kodiakrichards.com/contact.html">
-  <meta property="og:title"       content="Contact | Kodiak Richards">
-  <meta property="og:description" content="For referrals, collaborations, and general inquiries.">
-  <meta name="twitter:card"       content="summary">
+  <meta property="og:site_name"   content="Kodiak Richards">
+  <meta property="og:url"         content="https://www.kodiakrichards.com/articles/">
+  <meta property="og:title"       content="Articles | Kodiak Richards">
+  <meta property="og:description" content="Plain-language writing on the nervous system, burnout, relationships, and living well in a digital age.">
+  <meta property="og:image"       content="https://www.kodiakrichards.com/images/og-articles.jpg">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Articles | Kodiak Richards">
+  <meta name="twitter:description" content="Plain-language writing on the nervous system, burnout, relationships, and living well in a digital age.">
+  <meta name="twitter:image"      content="https://www.kodiakrichards.com/images/og-articles.jpg">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": "https://www.kodiakrichards.com/articles/#blog",
+    "name": "Articles by Kodiak Richards",
+    "url": "https://www.kodiakrichards.com/articles/",
+    "description": "Articles by Kodiak Richards on nervous system regulation, HRV biofeedback, burnout, digital wellness, and IFS and somatic work. San Diego, CA.",
+    "inLanguage": "en-US",
+    "author": { "@type": "Person", "@id": "https://www.kodiakrichards.com/#kodiak", "name": "Kodiak Richards", "url": "https://www.kodiakrichards.com/" },
+    "publisher": { "@type": "Person", "@id": "https://www.kodiakrichards.com/#kodiak", "name": "Kodiak Richards", "url": "https://www.kodiakrichards.com/" }
+  }
+  </script>
 </head>
 <body>
 
@@ -31,14 +51,14 @@
   <header>
     <nav class="nav" id="main-nav" aria-label="Main navigation">
       <div class="nav__inner">
-        <a href="index.html" class="nav__wordmark" aria-label="Kodiak Richards — home">Kodiak Richards</a>
+        <a href="/" class="nav__wordmark" aria-label="Kodiak Richards — home">Kodiak Richards</a>
 
         <ul class="nav__links" role="list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="one-on-one.html">1:1 Work</a></li>
-          <li><a href="community.html">Community</a></li>
-          <li><a href="articles/">Articles</a></li>
-          <li><a href="contact.html" class="nav__contact">Contact</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/one-on-one.html">1:1 Work</a></li>
+          <li><a href="/community.html">Community</a></li>
+          <li><a href="/articles/" class="active" aria-current="page">Articles</a></li>
+          <li><a href="/contact.html" class="nav__contact">Contact</a></li>
         </ul>
 
         <div class="nav__cta">
@@ -52,11 +72,11 @@
     </nav>
 
     <div class="nav__mobile" id="mobile-nav" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
-      <a href="index.html">Home</a>
-      <a href="one-on-one.html">1:1 Work &amp; Programs</a>
-      <a href="community.html">Community</a>
-      <a href="articles/">Articles</a>
-      <a href="contact.html" class="nav__mobile-contact">Contact</a>
+      <a href="/">Home</a>
+      <a href="/one-on-one.html">1:1 Work &amp; Programs</a>
+      <a href="/community.html">Community</a>
+      <a href="/articles/">Articles</a>
+      <a href="/contact.html" class="nav__mobile-contact">Contact</a>
       <a href="https://cal.com/kodiak.richards/intro-call" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a Call</a>
     </div>
   </header>
@@ -64,17 +84,45 @@
   <main>
 
     <!-- ====================================================
-         HERO — text only, no photo
+         INTRO
     ==================================================== -->
-    <section class="contact-hero" aria-labelledby="contact-heading">
-      <div class="contact-hero__inner fade-in">
-        <span class="label">Get in touch</span>
-        <h1 id="contact-heading">Contact.</h1>
-        <p>If you're a clinician looking to refer a client, a brand interested in collaborating, or just have a question — send a message below. I read everything personally.</p>
-        <a href="https://useful-plaster-026.notion.site/3840a70cc6c7808a9a57c9d0bca8eada?pvs=105" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Send a message</a>
+    <section class="articles-hero" aria-labelledby="articles-heading">
+      <div class="articles-hero__inner fade-in">
+        <span class="label">Articles</span>
+        <h1 id="articles-heading">Articles.</h1>
+        <p>Plain-language writing on the nervous system, burnout, relationships, and what it means to live well in a digital age. Grounded in research, clinical training, and lived experience.</p>
       </div>
     </section>
 
+    <!-- ====================================================
+         ARTICLE LIST — newest first. Add new cards at the TOP.
+         The empty state below hides itself once a card exists.
+    ==================================================== -->
+    <section class="articles-list-section" aria-label="All articles">
+      <div class="articles-list-section__inner">
+        <ul class="article-list" role="list">
+          <!-- CARD FORMAT (copy, uncomment, and fill in):
+          <li class="article-card">
+            <a href="/articles/SLUG/">
+              <div class="article-card__meta">
+                <span class="article-card__tag">TOPIC</span>
+                <time datetime="YYYY-MM-DD">Mon D, YYYY</time>
+                <span>N min read</span>
+              </div>
+              <h2>ARTICLE TITLE</h2>
+              <p>One-line summary of the article.</p>
+            </a>
+          </li>
+          -->
+        </ul>
+
+        <div class="articles-empty fade-in">
+          <h2>First articles coming soon.</h2>
+          <p>In the meantime, come say hello in Pocket of Humanity.</p>
+          <a href="/community.html" class="btn btn-outline-warm">Visit the community</a>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -84,16 +132,16 @@
   <footer class="footer" aria-label="Site footer">
     <div class="footer__top">
       <div class="footer__brand">
-        <a href="index.html" class="footer__wordmark">Kodiak Richards</a>
+        <a href="/" class="footer__wordmark">Kodiak Richards</a>
         <p class="footer__tagline">Coach · Community Builder · San Diego, CA</p>
       </div>
 
       <nav class="footer__nav" aria-label="Footer navigation">
-        <a href="index.html">Home</a>
-        <a href="one-on-one.html">1:1 Work</a>
-        <a href="community.html">Community</a>
-        <a href="articles/">Articles</a>
-        <a href="contact.html" class="active footer__contact-link">Contact</a>
+        <a href="/">Home</a>
+        <a href="/one-on-one.html">1:1 Work</a>
+        <a href="/community.html">Community</a>
+        <a href="/articles/">Articles</a>
+        <a href="/contact.html" class="footer__contact-link">Contact</a>
       </nav>
 
       <div class="footer__social" aria-label="Social media links">
@@ -127,6 +175,6 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="/main.js"></script>
 </body>
 </html>

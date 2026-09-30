@@ -1,0 +1,85 @@
+# Notifies IndexNow (Bing, Yandex, Seznam, Naver and others) when articles are
+# published or updated. Runs on push to main; Vercel deploys main on its own.
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "articles/**/index.html"
+      - "sitemap.xml"
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    env:
+      HOST: www.kodiakrichards.com
+      KEY: 4c07def82a608f747c62fd5b31448be4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Collect changed URLs
+        id: urls
+        run: |
+          set -euo pipefail
+          BEFORE="${{ github.event.before }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ] \
+             || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            BEFORE="$(git rev-parse HEAD~1)"
+          fi
+
+          : > urls.txt
+
+          # Article pages: articles/<slug>/index.html -> https://HOST/articles/<slug>/
+          git diff --name-only "$BEFORE" "$GITHUB_SHA" -- 'articles/' \
+            | grep -E '^articles/(.+/)?index\.html$' \
+            | grep -v '^articles/_template/' \
+            | sed -E "s#^(.*)index\.html\$#https://$HOST/\1#" >> urls.txt || true
+
+          # Sitemap: any <loc> on an added or changed line (new URLs and lastmod bumps)
+          git diff "$BEFORE" "$GITHUB_SHA" -- sitemap.xml \
+            | grep '^+' | grep -o '<loc>[^<]*</loc>' \
+            | sed -E 's#</?loc>##g' >> urls.txt || true
+
+          sort -u urls.txt -o urls.txt
+
+          # Guard: a published article must not keep the template's noindex tag
+          for f in $(git diff --name-only --diff-filter=AM "$BEFORE" "$GITHUB_SHA" -- 'articles/' \
+                     | grep -E 'index\.html$' | grep -v '^articles/_template/' || true); do
+            if grep -q 'name="robots" content="noindex"' "$f"; then
+              echo "::warning file=$f::This article still has the template's noindex tag, so search engines will ignore it."
+            fi
+          done
+
+          echo "Changed URLs:"; cat urls.txt
+          echo "count=$(wc -l < urls.txt | tr -d ' ')" >> "$GITHUB_OUTPUT"
+
+      - name: Nothing to submit
+        if: steps.urls.outputs.count == '0'
+        run: echo "No article or sitemap URLs changed. Skipping IndexNow."
+
+      - name: Wait for Vercel deploy
+        if: steps.urls.outputs.count != '0'
+        run: sleep 90
+
+      - name: Submit to IndexNow
+        if: steps.urls.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          jq -n --arg host "$HOST" --arg key "$KEY" \
+                --arg loc "https://$HOST/$KEY.txt" \
+                --rawfile urls urls.txt \
+                '{host: $host, key: $key, keyLocation: $loc,
+                  urlList: ($urls | split("\n") | map(select(length > 0)))}' > payload.json
+          cat payload.json
+          STATUS=$(curl -sS -o response.txt -w '%{http_code}' \
+            -X POST 'https://api.indexnow.org/indexnow' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data @payload.json)
+          echo "IndexNow responded HTTP $STATUS"; cat response.txt || true
+          case "$STATUS" in
+            200|202) ;;
+            *) echo "::error::IndexNow submission failed (HTTP $STATUS)"; exit 1 ;;
+          esac

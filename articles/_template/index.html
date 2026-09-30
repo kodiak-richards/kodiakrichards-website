@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--
+    ARTICLE TEMPLATE — see ARTICLES.md before publishing.
+    1. Copy this folder to /articles/<slug>/.
+    2. Replace every {{PLACEHOLDER}} (search for "{{").
+    3. DELETE the noindex line below. It exists only so the template itself never gets indexed.
+    4. Delete this comment.
+  -->
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Title under ~60 characters. Description 120–160 characters. -->
+  <title>{{TITLE}} | Kodiak Richards</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <link rel="canonical" href="https://www.kodiakrichards.com/articles/{{SLUG}}/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="article">
+  <meta property="og:site_name"   content="Kodiak Richards">
+  <meta property="og:url"         content="https://www.kodiakrichards.com/articles/{{SLUG}}/">
+  <meta property="og:title"       content="{{TITLE}}">
+  <meta property="og:description" content="{{META_DESCRIPTION}}">
+  <meta property="og:image"       content="https://www.kodiakrichards.com/images/og-articles.jpg">
+  <meta property="article:published_time" content="{{DATE_PUBLISHED}}">
+  <meta property="article:modified_time"  content="{{DATE_MODIFIED}}">
+  <meta property="article:author"         content="https://www.kodiakrichards.com/">
+  <meta property="article:section"        content="{{TOPIC}}">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="{{TITLE}}">
+  <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+  <meta name="twitter:image"      content="https://www.kodiakrichards.com/images/og-articles.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Structured data: article. Dates are YYYY-MM-DD. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{TITLE}}",
+    "description": "{{META_DESCRIPTION}}",
+    "datePublished": "{{DATE_PUBLISHED}}",
+    "dateModified": "{{DATE_MODIFIED}}",
+    "inLanguage": "en-US",
+    "author": { "@type": "Person", "@id": "https://www.kodiakrichards.com/#kodiak", "name": "Kodiak Richards", "url": "https://www.kodiakrichards.com/" },
+    "publisher": { "@type": "Person", "@id": "https://www.kodiakrichards.com/#kodiak", "name": "Kodiak Richards", "url": "https://www.kodiakrichards.com/" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://www.kodiakrichards.com/articles/{{SLUG}}/" },
+    "isPartOf": { "@id": "https://www.kodiakrichards.com/articles/#blog" },
+    "image": "https://www.kodiakrichards.com/images/og-articles.jpg",
+    "articleSection": "{{TOPIC}}",
+    "about": [{ "@type": "Thing", "name": "{{MAIN_TOPIC}}" }],
+    "keywords": ["{{KEYWORD_1}}", "{{KEYWORD_2}}", "{{KEYWORD_3}}"]
+  }
+  </script>
+
+  <!-- Structured data: breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.kodiakrichards.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://www.kodiakrichards.com/articles/" },
+      { "@type": "ListItem", "position": 3, "name": "{{TITLE}}", "item": "https://www.kodiakrichards.com/articles/{{SLUG}}/" }
+    ]
+  }
+  </script>
+
+  <!-- Structured data: FAQ. Must match the on-page FAQ WORD FOR WORD.
+       No FAQ section? Delete this whole <script> block too. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "{{FAQ_Q1}}", "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A1}}" } },
+      { "@type": "Question", "name": "{{FAQ_Q2}}", "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A2}}" } },
+      { "@type": "Question", "name": "{{FAQ_Q3}}", "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A3}}" } }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ======================================================
+       NAVIGATION
+  ====================================================== -->
+  <header>
+    <nav class="nav" id="main-nav" aria-label="Main navigation">
+      <div class="nav__inner">
+        <a href="/" class="nav__wordmark" aria-label="Kodiak Richards — home">Kodiak Richards</a>
+
+        <ul class="nav__links" role="list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/one-on-one.html">1:1 Work</a></li>
+          <li><a href="/community.html">Community</a></li>
+          <li><a href="/articles/" class="active" aria-current="page">Articles</a></li>
+          <li><a href="/contact.html" class="nav__contact">Contact</a></li>
+        </ul>
+
+        <div class="nav__cta">
+          <a href="https://cal.com/kodiak.richards/intro-call" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a Call</a>
+        </div>
+
+        <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="nav__mobile" id="mobile-nav" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+      <a href="/">Home</a>
+      <a href="/one-on-one.html">1:1 Work &amp; Programs</a>
+      <a href="/community.html">Community</a>
+      <a href="/articles/">Articles</a>
+      <a href="/contact.html" class="nav__mobile-contact">Contact</a>
+      <a href="https://cal.com/kodiak.richards/intro-call" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book a Call</a>
+    </div>
+  </header>
+
+  <main>
+    <article class="article">
+      <div class="article__inner">
+
+        <!-- 1. Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol role="list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><span aria-current="page">{{TITLE}}</span></li>
+          </ol>
+        </nav>
+
+        <!-- 2. Title + byline -->
+        <header class="article__header">
+          <h1>{{TITLE}}</h1>
+          <p class="article__byline">
+            By <strong>Kodiak Richards</strong> · Therapist-in-training &amp; integrative coach · San Diego
+            <span class="article__dates">
+              Published <time datetime="{{DATE_PUBLISHED}}">{{DATE_PUBLISHED_READABLE}}</time>
+              · Updated <time datetime="{{DATE_MODIFIED}}">{{DATE_MODIFIED_READABLE}}</time>
+              · {{READING_TIME}} min read
+            </span>
+          </p>
+        </header>
+
+        <!-- 3. The short answer: 2–4 sentences that directly answer the article's main question. -->
+        <aside class="short-answer" aria-label="The short answer">
+          <span class="label">The short answer</span>
+          <p>{{SHORT_ANSWER}}</p>
+        </aside>
+
+        <!-- 4. Body. Phrase each H2 as a real question people search. -->
+        <div class="prose">
+          <p>{{INTRO_PARAGRAPH}}</p>
+
+          <h2>{{QUESTION_HEADING_1}}</h2>
+          <p>{{PARAGRAPH}}</p>
+
+          <h2>{{QUESTION_HEADING_2}}</h2>
+          <p>{{PARAGRAPH}}</p>
+          <ul>
+            <li>{{LIST_ITEM}}</li>
+            <li>{{LIST_ITEM}}</li>
+          </ul>
+
+          <!-- Optional elements, delete if unused:
+          <blockquote>
+            <p>Quote text.</p>
+            <cite>Source</cite>
+          </blockquote>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Column</th><th>Column</th></tr></thead>
+              <tbody><tr><td>Cell</td><td>Cell</td></tr></tbody>
+            </table>
+          </div>
+          -->
+        </div>
+
+        <!-- 5. FAQ (optional, 3–5 Q&As). Text must match the FAQPage JSON-LD exactly.
+             No FAQ? Delete this section AND the FAQPage script in <head>. -->
+        <section class="faq" aria-labelledby="faq-heading">
+          <h2 id="faq-heading">Frequently asked questions</h2>
+          <div class="faq__item">
+            <h3>{{FAQ_Q1}}</h3>
+            <p>{{FAQ_A1}}</p>
+          </div>
+          <div class="faq__item">
+            <h3>{{FAQ_Q2}}</h3>
+            <p>{{FAQ_A2}}</p>
+          </div>
+          <div class="faq__item">
+            <h3>{{FAQ_Q3}}</h3>
+            <p>{{FAQ_A3}}</p>
+          </div>
+        </section>
+
+        <!-- 6. Author box -->
+        <section class="author-box" aria-labelledby="author-heading">
+          <img class="author-box__photo" src="/images/photos/kodiak-author.jpg" alt="Kodiak Richards" width="88" height="88" loading="lazy">
+          <div>
+            <h2 id="author-heading">Kodiak Richards</h2>
+            <p>Kodiak Richards is a therapist-in-training and integrative coach in San Diego, and the founder of Pocket of Humanity. Kodiak works with creatives, entrepreneurs, and growth-oriented adults on nervous system regulation, burnout, relationships, and digital wellness.</p>
+            <p class="author-box__creds">M.A. Clinical Mental Health Counseling · B.S. Psychology · Certified Nutritionist · Certified Personal Trainer</p>
+            <div class="author-box__links">
+              <a href="/one-on-one.html">1:1 Work</a>
+              <a href="/community.html">Community</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. CTA -->
+        <section class="article-cta" aria-labelledby="cta-heading">
+          <h2 id="cta-heading">If this resonated</h2>
+          <p>You don't have to work through it alone. Work with me 1:1, or join a free community of people doing the same work.</p>
+          <div class="article-cta__btns">
+            <a href="/one-on-one.html" class="btn btn-primary">Work with me</a>
+            <a href="/community.html" class="btn btn-outline-warm">Join Pocket of Humanity</a>
+          </div>
+        </section>
+
+        <!-- 8. Related articles (2–3). Hides itself automatically when the list is empty. -->
+        <nav class="related" aria-labelledby="related-heading">
+          <h2 id="related-heading">Related articles</h2>
+          <ul role="list">
+            <!-- <li><a href="/articles/OTHER-SLUG/">Other article title</a></li> -->
+          </ul>
+        </nav>
+
+        <!-- 9. Disclaimer -->
+        <p class="article__disclaimer">This article is for education only and isn't therapy or medical advice. If you're in crisis, call or text 988.</p>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ======================================================
+       FOOTER
+  ====================================================== -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="/" class="footer__wordmark">Kodiak Richards</a>
+        <p class="footer__tagline">Coach · Community Builder · San Diego, CA</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="/">Home</a>
+        <a href="/one-on-one.html">1:1 Work</a>
+        <a href="/community.html">Community</a>
+        <a href="/articles/">Articles</a>
+        <a href="/contact.html" class="footer__contact-link">Contact</a>
+      </nav>
+
+      <div class="footer__social" aria-label="Social media links">
+        <a href="https://www.instagram.com/kodiakrichards/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@kodiakrichards" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.41a8.16 8.16 0 0 0 4.77 1.52V7.48a4.85 4.85 0 0 1-1-.79z"/>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@kodiakrichards" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81zM9.75 15.52V8.48L15.5 12l-5.75 3.52z"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/kodiakrichards" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__legal">Coaching services are separate from and not equivalent to licensed psychotherapy and are provided under licensed clinical supervision for California residents. San Diego, CA.</p>
+    </div>
+  </footer>
+
+  <script src="/main.js"></script>
+</body>
+</html>

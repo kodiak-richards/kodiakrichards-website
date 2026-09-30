@@ -17,6 +17,12 @@ Hosted on Vercel. Deployed via GitHub.
 1. index.html — Home
 2. one-on-one.html — 1:1 Work (Coaching & Counseling)
 3. community.html — POH Community
+4. contact.html — Contact
+5. articles/ — Articles index (articles/index.html) and one folder
+   per article (articles/<slug>/index.html)
+
+## Articles
+To publish or edit an article, follow ARTICLES.md exactly.
 
 ## Site Structure
 
@@ -36,7 +42,7 @@ IRL San Diego → CCC framework → CTA → Footer
 
 ## Navigation
 Wordmark left: "Kodiak Richards"
-Links: Home · 1:1 Work · Community
+Links: Home · 1:1 Work · Community · Articles · Contact
 Right CTA button: "Book a Call" → Cal.com link
 
 ## External Links (use # as placeholder until real links provided)
